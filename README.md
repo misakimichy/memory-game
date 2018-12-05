@@ -2,7 +2,7 @@
 
 This memory game is for the second assignment.
 
-##Content
+## Content
 - index.html 
   
   contents of memory game
