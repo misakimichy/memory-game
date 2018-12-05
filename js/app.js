@@ -1,67 +1,89 @@
 //All card items
-const cardsArray = ['australia','australia','egypt','egypt','france','france','india','india','italy','italy','japan','japan','london','london','usa','usa'];
 
 // * Add shuffle function
 // When should it work? - the very first screen and when the player click the refresh button.
 
 
 
-
-//Flip cards
-const cards = document.querySelectorAll('.card');
-
-let flippedCard = false;
-let lockBoard = false;
-let firstCard, secondCard;
-
-
-
-function flipCard() {
-    if (lockBoard) return;
-    if (this === firstCard) return;
-    this.classList.add('flip');
-
-
-    if (!flippedCard) {
-        //first card click
-        flippedCard = true;
-        firstCard = this;
-        return;
-
-    } else {
-        //second card click
-        flippedCard = false;
-        secondCard = this;
-    
-        checkForMatch();
+class MemoryGame {
+    constructor() {
+        this.flippedCard = false;
+        this.lockBoard = false;
+        this.firstCard = true;
+        this.secondCard = true;
+        this.initCountries();
     }
-}
 
-function checkForMatch() {
-     //if they match stay facing up
-    if (firstCard.dataset.framework === secondCard.dataset.framework) {
-        firstCard.removeEventListener('click', flipCard);
-        secondCard.removeEventListener('click', flipCard);
-        return;
+    initCountries() {
+        // prepare 16 shuffled countries for the 16 cards
+        let countries = ['australia','australia','egypt','egypt','france','france','india','india','italy','italy','japan','japan','london','london','usa','usa'];
+        countries = countries.sort(function(a, b){return 0.5 - Math.random()});
 
-    } else {
-    // if they don't match flip back
-        lockBoard = true; 
-        setTimeout(() => {
-            firstCard.classList.remove('flip');
-            secondCard.classList.remove('flip');
+        // for each .card element
+        document.querySelectorAll('.card').forEach(function(card, i) {
+
+            // grab the country from countries using the index
+            let country = countries[i];
+
+            // update the data-country and src attributes
+            card.dataset.country = country;
+            card.querySelector('.back-face').src = `img/${country}.jpg`;
+        });
+    }
+
+    flipCard(card) {
+        // lock board so when player double click the same card, it won't count as a second click
+        if (this.lockBoard) return;
+        // current clicked card should equal to first card so player cannot click the same card       
+        if (card === this.firstCard) return;
+    
+        card.classList.add('flip');
+    
+        if (!this.flippedCard) {
+            //first card click
+            this.flippedCard = true;
+            this.firstCard = card;
+            return;
+    
+        } else {
+            //second card click
+            this.flippedCard = false;
+            this.secondCard = card;
             
-            resetBoard();
-    }, 800)};
-}
+            this.checkForMatch();
+        }
+    } 
 
-function resetBoard() {
-    [flippedCard, lockBoard] = [false, false];
-    [firstCard, secondCard] = [null, null];
-}
+    checkForMatch() {
+        //if they match stay facing up
+        if (this.firstCard.dataset.country === this.secondCard.dataset.country) {
+            this.firstCard.removeEventListener('click', this.flipCard);
+            this.secondCard.removeEventListener('click', this.flipCard);
+            return;
+    
+        } else {
+        // if they don't match flip back
+        this.lockBoard = true; 
+            setTimeout(() => {
+                this.firstCard.classList.remove('flip');
+                this.secondCard.classList.remove('flip');
+                this.resetBoard();
+        }, 800)};
+    }
 
-cards.forEach(card => card.addEventListener('click', flipCard));
+    resetBoard() {
+        [this.flippedCard, this.lockBoard] = [false, false];
+        [this.firstCard, this.secondCard] = [null, null];
+    }
+};
 
+
+let game = new MemoryGame();
+
+let cards = document.querySelectorAll('.card');
+cards.forEach(card => card.addEventListener('click',function() {
+    game.flipCard(this);
+}));
 
 
 
