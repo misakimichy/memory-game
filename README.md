@@ -1,4 +1,4 @@
-# memory-game - Udacity Front-End Nanodegree Program
+# Memory Game - Udacity Front-End Nanodegree Program
 
 This memory game is for the second assignment.
 
