@@ -12,6 +12,7 @@ class MemoryGame {
         this.firstCard = true;
         this.secondCard = true;
         this.initCountries();
+
     }
 
     initCountries() {
@@ -75,6 +76,8 @@ class MemoryGame {
         [this.flippedCard, this.lockBoard] = [false, false];
         [this.firstCard, this.secondCard] = [null, null];
     }
+
+    
 };
 
 
@@ -84,6 +87,10 @@ let cards = document.querySelectorAll('.card');
 cards.forEach(card => card.addEventListener('click',function() {
     game.flipCard(this);
 }));
+
+document.querySelector('#reset').addEventListener('click', function () {
+    game = new MemoryGame();
+});
 
 
 
