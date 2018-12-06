@@ -11,8 +11,23 @@ class MemoryGame {
         this.lockBoard = false;
         this.firstCard = true;
         this.secondCard = true;
-        this.initCountries();
+        this.initCards();
+    }
 
+    initCards() {
+        // gather flipped cards
+        let flipped = document.querySelectorAll('.flip');
+
+        // unflip every cards
+        flipped.forEach(function(card) {
+            card.classList.remove('flip');
+        });
+
+        if (flipped.length === 0){
+            this.initCountries();
+        } else {
+            setTimeout (() => this.initCountries(), 700);
+        }
     }
 
     initCountries() {
@@ -31,6 +46,7 @@ class MemoryGame {
             card.querySelector('.back-face').src = `img/${country}.jpg`;
         });
     }
+
 
     flipCard(card) {
         // lock board so when player double click the same card, it won't count as a second click
