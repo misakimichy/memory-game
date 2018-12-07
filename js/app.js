@@ -167,8 +167,8 @@ let game = new MemoryGame(timer);
 
 
 let cards = document.querySelectorAll('.card');
-cards.forEach(card => card.addEventListener('click', function() {
-    game.flipCard(this);
+cards.forEach(card => card.addEventListener('click', (e) => {
+    game.flipCard(e.currentTarget);
 }));
 
 /*
