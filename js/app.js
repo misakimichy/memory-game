@@ -145,13 +145,13 @@ class Timer {
 
         //minutes and seconds always have two digit
         if(this.seconds < 10) {
-            displaySeconds = `0${this.seconds.toString()}`;
+            displaySeconds = `0${this.seconds}`;
         } else {
             displaySeconds = this.seconds;
         }
 
         if (this.minutes < 10) {
-            displayMinutes = `0${this.minutes.toString()}`;
+            displayMinutes = `0${this.minutes}`;
         } else {
             displayMinutes = this.minutes;
         }
