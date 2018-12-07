@@ -43,6 +43,11 @@ h1 {
     list-style: none;
 }
 
+.rating {
+    display: inline-block;
+    width: 200px;
+}
+
 .rating li {
     margin-right: 0.5em;
     font-size: 1.5em;
@@ -54,16 +59,20 @@ h1 {
     padding: 0;
 }
 
+.counter {
+    font-weight: bold;
+    font-size: 1em;
+}
+
 .reset {
     cursor: pointer;
     font-size: 1.5em;
-    width: 150px;
-    padding-left: 0.7em;
+    width: 200px;
 }
 
 .fa-undo {
     transform: scale(1);
-    margin-left: 0.5em;
+    margin: 0 0.5em 0;
 }
 
 .fa-undo:active {
@@ -125,5 +134,14 @@ h1 {
     transform: rotateY(180deg);
 }
 
+.winning-screen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    display: hidden;
+    opacity: 0;
+    transition: opacity 500ms ease-in-out;
+}
 
 /* Responsive Design comes here
