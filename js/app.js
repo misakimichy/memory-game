@@ -1,7 +1,10 @@
 class MemoryGame {
-    constructor(timer) {
+    constructor(timer, counter) {
         this.timer = timer;
         this.timer.reset();
+
+        this.counter = counter;
+        this.counter.reset();
 
         this.flippedCard = false;
         this.lockBoard = false;
@@ -71,6 +74,8 @@ class MemoryGame {
             this.secondCard = card;
             
             this.checkForMatch();
+
+            this.counter.increment();
         }
     } 
 
@@ -160,23 +165,27 @@ class Timer {
     }   
 }
 
-class counter {
-    constructor() {
-        this.counts = 0;
-    }
-    
-    count() {
-        this.counts++
-        let interval = setInterval (() => {
 
-        });
+class Counter {
+    constructor(element) {
+        this.element = element;
+        this.count = 0;
     }
 
+    increment() {
+        this.element.innerHTML = ++this.count;
+    }
+
+    reset() {
+        this.count = 0;
+        this.element.innerHTML = this.count;
+    }
 }
 
 // ToDo: wrap these global variables with anonymous function();
 let timer = new Timer(document.querySelector('.timer'));
-let game = new MemoryGame(timer);
+let counter = new Counter(document.querySelector('#turns'));
+let game = new MemoryGame(timer, counter);
 
 
 let cards = document.querySelectorAll('.card');
@@ -186,7 +195,7 @@ cards.forEach(card => card.addEventListener('click', (e) => {
 
 
 document.querySelector('#reset').addEventListener('click', () => {
-    game = new MemoryGame(timer);
+    game = new MemoryGame(timer, counter);
 });
 
 
