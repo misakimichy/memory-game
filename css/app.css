@@ -84,15 +84,15 @@ h1 {
     height: 30px;
     background-color: lightgray;
     float: left;
-   
+    text-align: center;
 }
 /* Style of main content */
 
 .cards {
     margin: 0;
     padding: 1em;
-    min-width: 900px;
-    min-height: 85vh;
+    width: 900px;
+    height: 85vh;
     background-color: rgba(211, 211, 211, 0.5);
     border-radius: 4px;
     display: grid;
@@ -135,13 +135,60 @@ h1 {
 }
 
 .winning-screen {
+    position: absolute;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    display: hidden;
-    opacity: 0;
-    transition: opacity 500ms ease-in-out;
+    z-index: 99;
 }
 
-/* Responsive Design comes here
+.winning-screen.visible {
+    display: flex;
+    animation: overlay-grow 500ms forwards;
+}
+
+@keyframes overlay-grow {
+    from  {
+        background-color: rgba(255, 255, 255, 0);
+        font-size: 0;
+    }
+    to {
+        background-color: rgba(255, 255, 255, 0.8);
+        font-size: 2em;
+    }
+    
+}
+
+/* Responsive Design comes here */
+@media (max-width: 599px) {
+    h1 {
+        font-size: 2.3em;
+    }
+
+    .cards {
+        width: 90%;
+        height: 50%;
+        grid-template-rows: repeat(4, 100px);
+    }
+
+    .card img {
+        max-width: 80px;
+        max-height: 90px;
+        right: -2em;
+    }
+
+}
+
+@media (min-width: 600px) and (max-width: 900px) {
+    .cards {
+        width: 90%;
+        grid-template-rows: repeat(4, 1fr);
+    }
+
+    .card img {
+        max-width: 110px;
+        max-height: 120px;
+        right: -4em;
+    }
+}

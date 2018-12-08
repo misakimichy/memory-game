@@ -157,11 +157,24 @@ class Timer {
         }
 
         return `${displayMinutes}:${displaySeconds}`;
-    }
-
-   
+    }   
 }
 
+class counter {
+    constructor() {
+        this.counts = 0;
+    }
+    
+    count() {
+        this.counts++
+        let interval = setInterval (() => {
+
+        });
+    }
+
+}
+
+// ToDo: wrap these global variables with anonymous function();
 let timer = new Timer(document.querySelector('.timer'));
 let game = new MemoryGame(timer);
 
@@ -171,13 +184,6 @@ cards.forEach(card => card.addEventListener('click', (e) => {
     game.flipCard(e.currentTarget);
 }));
 
-/*
- Need to choose first card
-.addEventListener('click', function() {
-    activateTimer = new Timer();
-});
-*/
-
 
 document.querySelector('#reset').addEventListener('click', () => {
     game = new MemoryGame(timer);
@@ -185,20 +191,22 @@ document.querySelector('#reset').addEventListener('click', () => {
 
 
 
-// Once the player win (the last pair matched), the timer stops.
+// ToDO: Once the player win (the last pair matched), the timer stops.
 
 
 
-// * Add star rating
+// ToDO: Add star rating
 // When the cards don't match, the player loose a star rating goes down.
 // Player has three stars and when all the stars are gone, it's game over
+// add game over popup
 // When player hits the refresh button, the star rating back to full
+// 
 
 
-// * Add a move counter next to the star rating
+// ToDO: Add a move counter next to the star rating
 //  When the player click the card twice (one pair of move), the counter counts up.
 // When the player refresh the page, the counter back to 0.
 
 
-// * Once every cards face up, the player wins and congrats screen shows up
+// ToDo: Once every cards face up, the player wins and congrats screen shows up
 // 
