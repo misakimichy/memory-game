@@ -134,18 +134,24 @@ h1 {
     transform: rotateY(180deg);
 }
 
-.winning-screen {
-    position: absolute;
+.overlay-screen {
+    position: fixed;
+    right: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 99;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
-    z-index: 99;
+    display: none;
+
 }
 
-.winning-screen.visible {
+.overlay-screen.visible {
     display: flex;
-    animation: overlay-grow 500ms forwards;
+    animation: overlay-grow 800ms forwards;
 }
 
 @keyframes overlay-grow {
@@ -156,7 +162,6 @@ h1 {
     to {
         background-color: rgba(255, 255, 255, 0.8);
         font-size: 2em;
-
     }
     
 }

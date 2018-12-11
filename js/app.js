@@ -89,9 +89,10 @@ class MemoryGame {
 
 
             if (document.querySelectorAll('.flip').length === this.countries.length) {
-                   console.log('you won!');
                 document.querySelector('#winner-screen').classList.add('visible');
                 this.timer.stop();
+                
+                
                
             }
             
