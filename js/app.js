@@ -91,7 +91,8 @@ class MemoryGame {
             if (document.querySelectorAll('.flip').length === this.countries.length) {
                    console.log('you won!');
                 document.querySelector('#winner-screen').classList.add('visible');
-
+                this.timer.stop();
+               
             }
             
 
@@ -103,7 +104,7 @@ class MemoryGame {
                 this.firstCard.classList.remove('flip');
                 this.secondCard.classList.remove('flip');
                 this.endTurn();
-        }, 500)};
+        }, 800)};
     }
 
     // First card and second card variables should be reset after each turn.
