@@ -168,28 +168,41 @@ h1 {
     }
 
     .cards {
-        width: 90%;
+        width: 100%;
         height: 50%;
         grid-template-rows: repeat(4, 100px);
     }
 
     .card img {
-        max-width: 80px;
+        max-width: 100px;
         max-height: 90px;
-        right: -2em;
+        right: -3em;
     }
-
 }
 
-@media (min-width: 600px) and (max-width: 900px) {
+@media (min-width: 600px) and (max-width: 749px) {
     .cards {
-        width: 90%;
-        grid-template-rows: repeat(4, 1fr);
+        width: 95%;
+        height: 70%;
+        grid-template-rows: repeat(4, 120px);
     }
 
     .card img {
-        max-width: 110px;
-        max-height: 120px;
+        max-width: 120px;
+        max-height: 115px;
         right: -4em;
+    }
+}
+
+@media (min-width: 750px) and (max-width: 850px) {
+    .cards {
+        width: 95%;
+        height: 80%;
+        grid-template-rows: repeat(4, 140px);
+    }
+
+    .card img {
+        max-width: 136px;
+        max-height: 114px;
     }
 }
