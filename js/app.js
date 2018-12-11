@@ -1,10 +1,10 @@
 class MemoryGame {
-    constructor(timer, counter) {
+    constructor(timer, moves) {
         this.timer = timer;
         this.timer.reset();
 
-        this.counter = counter;
-        this.counter.reset();
+        this.moves = moves;
+        this.moves.reset();
 
         this.flippedCard = false;
         this.lockBoard = false;
@@ -76,7 +76,7 @@ class MemoryGame {
             
             this.checkForMatch();
 
-            this.counter.increment();
+            this.moves.increment();
         }
     } 
 
@@ -180,7 +180,7 @@ class Timer {
 }
 
 
-class Counter {
+class Moves {
     constructor(element) {
         this.element = element;
         this.count = 0;
@@ -203,8 +203,8 @@ class Counter {
 
 // ToDo: wrap these global variables with anonymous function();
 let timer = new Timer(document.querySelector('.timer'));
-let counter = new Counter(document.querySelector('#turns'));
-let game = new MemoryGame(timer, counter);
+let moves = new Moves(document.querySelector('#turns'));
+let game = new MemoryGame(timer, moves);
 
 
 let cards = document.querySelectorAll('.card');
@@ -214,7 +214,7 @@ cards.forEach(card => card.addEventListener('click', (e) => {
 
 
 document.querySelector('#reset').addEventListener('click', () => {
-    game = new MemoryGame(timer, counter);
+    game = new MemoryGame(timer, moves);
 });
 
 
