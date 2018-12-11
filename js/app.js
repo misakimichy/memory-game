@@ -87,15 +87,7 @@ class MemoryGame {
             this.firstCard.removeEventListener('click', this.flipCard);
             this.secondCard.removeEventListener('click', this.flipCard);
 
-
-            if (document.querySelectorAll('.flip').length === this.countries.length) {
-                document.querySelector('#winner-screen').classList.add('visible');
-                this.timer.stop();
-                
-                
-               
-            }
-            
+            this.checkForWin();
 
         } else {
         // if they don't match flip back
@@ -106,6 +98,18 @@ class MemoryGame {
                 this.secondCard.classList.remove('flip');
                 this.endTurn();
         }, 800)};
+    }
+
+    checkForWin() {
+        if (document.querySelectorAll('.flip').length === this.countries.length) {
+            this.markWin();
+        }
+    }
+
+    markWin() {
+        document.querySelector('#winner-screen').classList.add('visible');
+        this.timer.stop();
+        //console.log(document.querySelector('#yourTime').
     }
 
     // First card and second card variables should be reset after each turn.
@@ -192,6 +196,11 @@ class Counter {
     }
 }
 
+// Stars
+
+
+
+
 // ToDo: wrap these global variables with anonymous function();
 let timer = new Timer(document.querySelector('.timer'));
 let counter = new Counter(document.querySelector('#turns'));
@@ -210,9 +219,6 @@ document.querySelector('#reset').addEventListener('click', () => {
 
 
 
-// ToDO: Once the player win (the last pair matched), the timer stops.
-
-
 
 // ToDO: Add star rating
 // When the cards don't match, the player loose a star rating goes down.
@@ -221,6 +227,3 @@ document.querySelector('#reset').addEventListener('click', () => {
 // When player hits the refresh button, the star rating back to full
 // 
 
-
-// ToDo: Once every cards face up, the player wins and congrats screen shows up
-// 
