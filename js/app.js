@@ -107,9 +107,10 @@ class MemoryGame {
     }
 
     markWin() {
-        document.querySelector('#winner-screen').classList.add('visible');
         this.timer.stop();
-        //console.log(document.querySelector('#yourTime').
+        document.querySelector('#winner-screen').classList.add('visible');
+        document.querySelector('#yourTime').innerHTML = `Your time was ${this.timer}`;
+
     }
 
     // First card and second card variables should be reset after each turn.
@@ -213,7 +214,7 @@ cards.forEach(card => card.addEventListener('click', (e) => {
 }));
 
 
-document.querySelector('#reset').addEventListener('click', () => {
+document.querySelector('.retry').addEventListener('click', () => {
     game = new MemoryGame(timer, moves);
 });
 
