@@ -10,6 +10,8 @@ class MemoryGame {
         this.lockBoard = false;
         this.firstCard = true;
         this.secondCard = true;
+
+        this.countries = ['australia','australia','egypt','egypt','france','france','india','india','italy','italy','japan','japan','london','london','usa','usa'];
     
         this.initCards();
     }
@@ -33,15 +35,14 @@ class MemoryGame {
 
     initCountries() {
         // prepare 16 shuffled countries for the 16 cards
-        let countries = ['australia','australia','egypt','egypt','france','france','india','india','italy','italy','japan','japan','london','london','usa','usa'];
         // got an idea from here: https://www.w3schools.com/js/js_array_sort.asp
-        countries = countries.sort((a, b) => {return 0.5 - Math.random()});
+        this.countries = this.countries.sort((a, b) => {return 0.5 - Math.random()});
 
         // for each .card element
         document.querySelectorAll('.card').forEach((card, i) => {
 
             // grab the country from countries using the index
-            let country = countries[i];
+            let country = this.countries[i];
 
             // update the data-country and src attributes
             card.dataset.country = country;
@@ -85,8 +86,15 @@ class MemoryGame {
         if (this.firstCard.dataset.country === this.secondCard.dataset.country) {
             this.firstCard.removeEventListener('click', this.flipCard);
             this.secondCard.removeEventListener('click', this.flipCard);
-            return;
-    
+
+
+            if (document.querySelectorAll('.flip').length === this.countries.length) {
+                   console.log('you won!');
+                document.querySelector('#winner-screen').classList.add('visible');
+
+            }
+            
+
         } else {
         // if they don't match flip back
         this.lockBoard = true; 
@@ -95,7 +103,7 @@ class MemoryGame {
                 this.firstCard.classList.remove('flip');
                 this.secondCard.classList.remove('flip');
                 this.endTurn();
-        }, 800)};
+        }, 500)};
     }
 
     // First card and second card variables should be reset after each turn.
@@ -210,11 +218,6 @@ document.querySelector('#reset').addEventListener('click', () => {
 // add game over popup
 // When player hits the refresh button, the star rating back to full
 // 
-
-
-// ToDO: Add a move counter next to the star rating
-//  When the player click the card twice (one pair of move), the counter counts up.
-// When the player refresh the page, the counter back to 0.
 
 
 // ToDo: Once every cards face up, the player wins and congrats screen shows up
