@@ -1,10 +1,7 @@
 class MemoryGame {
     constructor(timer, moves) {
         this.timer = timer;
-        this.timer.reset();
-
         this.moves = moves;
-        this.moves.reset();
 
         this.flippedCard = false;
         this.lockBoard = false;
@@ -13,7 +10,20 @@ class MemoryGame {
 
         this.countries = ['australia','australia','egypt','egypt','france','france','india','india','italy','italy','japan','japan','london','london','usa','usa'];
     
+        this.reset();
+    }
+
+    reset() {
+        this.timer.reset();
+        this.moves.reset();
+
+        this.initScreen();
         this.initCards();
+    }
+
+    initScreen() {
+        // turn off win or lose screens
+        document.querySelector('#winner-screen').classList.remove('visible');
     }
 
     initCards() {
@@ -82,11 +92,10 @@ class MemoryGame {
 
 
     checkForMatch() {
-        //if they match stay facing up
+        //if they match lock matched cards
         if (this.firstCard.dataset.country === this.secondCard.dataset.country) {
             this.firstCard.removeEventListener('click', this.flipCard);
             this.secondCard.removeEventListener('click', this.flipCard);
-
             this.checkForWin();
 
         } else {
@@ -100,11 +109,13 @@ class MemoryGame {
         }, 800)};
     }
 
+    // when all the flipped cards length equal to the array length, player win
     checkForWin() {
         if (document.querySelectorAll('.flip').length === this.countries.length) {
             this.markWin();
         }
     }
+
 
     //Show the time and score rating
     markWin() {
@@ -190,6 +201,18 @@ class Moves {
 
     increment() {
         this.element.innerHTML = `${++this.count} Moves`;  
+       
+        if(this.moves > 6) {
+            console.log(this.move)
+            document.querySelectorAll('.fa-star').classList.add('invisible');
+                
+        } else if (this.moves > 15) {
+            document.querySelectorAll('.fa-star').classList.add('invisible');
+
+        } else if (this.moves > 31) {
+            document.querySelector('#gameOver').classList.add('visible');
+        }
+        
     }
 
     reset() {
@@ -205,13 +228,6 @@ class Moves {
 // When player hits the refresh button, the star rating back to full
 // 
 
-// class Life {
-//     constructor() {
-
-//     }
-
-
-// }
 
 
 
@@ -227,10 +243,9 @@ cards.forEach(card => card.addEventListener('click', (e) => {
 }));
 
 
-document.querySelector('.retry').addEventListener('click', () => {
+document.querySelectorAll('.retry').forEach(element => element.addEventListener('click', () => {
     game = new MemoryGame(timer, moves);
-});
-
+}));
 
 
 
