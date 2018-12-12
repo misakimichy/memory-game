@@ -135,10 +135,12 @@ class MemoryGame {
         document.querySelector('#yourTime').innerHTML = `Your time was ${this.timer}`;
         if (this.moves.count < 6) {
             document.querySelector('#yourScore').innerHTML = `Your score was excellent!!`;
+            
         } else if (this.moves.count < 15) {
             document.querySelector('#yourScore').innerHTML = `Your score was great!`;
+
         } else if (this.moves.count < 30) {
-            document.querySelector('#yourScore').innerHTML = `Your score was okay.`;
+            document.querySelector('#yourScore').innerHTML = `Your score was alright.`;
         }
     }
 

@@ -129,6 +129,10 @@ h1 {
 }
 
 .back-face {
+    -o-transform: rotateY(180deg);
+    -ms-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    -webkit-transform: rotateY(180deg);
     transform: rotateY(180deg);
 }
 
@@ -139,6 +143,10 @@ h1 {
 }
 
 .card.flip {
+    -o-transform: rotateY(180deg);
+    -ms-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    -webkit-transform: rotateY(180deg);
     transform: rotateY(180deg);
 }
 
@@ -161,6 +169,9 @@ h1 {
 
 .overlay-screen.visible {
     display: flex;
+    -o-animation: overlay-grow 800ms forwards;
+    -moz-animation: overlay-grow 800ms forwards;
+    -webkit-animation: overlay-grow 800ms forwards;
     animation: overlay-grow 800ms forwards;
 }
 
@@ -176,6 +187,51 @@ h1 {
 .retry:hover {
     transform: scale(.98);
 }
+
+@-o-keyframes overlay-grow {
+    from  {
+        background-color: rgba(255, 255, 255, 0);
+        font-size: 0;
+    }
+    to {
+        background-color: rgba(255, 255, 255, 0.8);
+        font-size: 2em;
+    }
+}
+
+@-ms-keyframes overlay-grow {
+    from  {
+        background-color: rgba(255, 255, 255, 0);
+        font-size: 0;
+    }
+    to {
+        background-color: rgba(255, 255, 255, 0.8);
+        font-size: 2em;
+    }
+}
+
+@-mos-keyframes overlay-grow {
+    from  {
+        background-color: rgba(255, 255, 255, 0);
+        font-size: 0;
+    }
+    to {
+        background-color: rgba(255, 255, 255, 0.8);
+        font-size: 2em;
+    }
+}
+
+@-webkit-keyframes overlay-grow {
+    from  {
+        background-color: rgba(255, 255, 255, 0);
+        font-size: 0;
+    }
+    to {
+        background-color: rgba(255, 255, 255, 0.8);
+        font-size: 2em;
+    }
+}
+
 
 @keyframes overlay-grow {
     from  {
