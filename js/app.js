@@ -106,6 +106,7 @@ class MemoryGame {
         }
     }
 
+    //Show the time and score rating
     markWin() {
         this.timer.stop();
         document.querySelector('#winner-screen').classList.add('visible');
@@ -188,17 +189,29 @@ class Moves {
     }
 
     increment() {
-        this.element.innerHTML = ++this.count;
+        this.element.innerHTML = `${++this.count} Moves`;  
     }
 
     reset() {
         this.count = 0;
-        this.element.innerHTML = this.count;
+        this.element.innerHTML = `${this.count} Moves`;
     }
 }
 
-// Stars
+// ToDo: Add star rating
+// When the cards don't match, the player loose a star rating goes down.
+// Player has three stars and when all the stars are gone, it's game over
+// add game over screen popup
+// When player hits the refresh button, the star rating back to full
+// 
 
+// class Life {
+//     constructor() {
+
+//     }
+
+
+// }
 
 
 
@@ -221,10 +234,4 @@ document.querySelector('.retry').addEventListener('click', () => {
 
 
 
-// ToDO: Add star rating
-// When the cards don't match, the player loose a star rating goes down.
-// Player has three stars and when all the stars are gone, it's game over
-// add game over popup
-// When player hits the refresh button, the star rating back to full
-// 
 
