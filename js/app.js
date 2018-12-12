@@ -133,6 +133,13 @@ class MemoryGame {
         this.timer.stop();
         document.querySelector('#winner-screen').classList.add('visible');
         document.querySelector('#yourTime').innerHTML = `Your time was ${this.timer}`;
+        if (this.moves.count < 6) {
+            document.querySelector('#yourScore').innerHTML = `Your score was excellent!!`;
+        } else if (this.moves.count < 15) {
+            document.querySelector('#yourScore').innerHTML = `Your score was great!`;
+        } else if (this.moves.count < 30) {
+            document.querySelector('#yourScore').innerHTML = `Your score was okay.`;
+        }
     }
 
     // Excellent from 0 to 5 moves, Great from 6 to 15 moves, Good from 16 to 30 moves.
@@ -248,7 +255,6 @@ cards.forEach(card => card.addEventListener('click', (e) => {
 document.querySelectorAll('.retry').forEach(element => element.addEventListener('click', () => {
     game = new MemoryGame(timer, moves);
 }));
-
 
 
 
