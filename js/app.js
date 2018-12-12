@@ -112,7 +112,7 @@ class MemoryGame {
                 this.firstCard.classList.remove('flip');
                 this.secondCard.classList.remove('flip');
                 this.endTurn();
-        }, 800)};
+        }, 600)};
     }
 
     // First card and second card variables should be reset after each turn.
