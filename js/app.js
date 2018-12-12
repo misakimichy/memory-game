@@ -24,6 +24,11 @@ class MemoryGame {
     initScreen() {
         // turn off win or lose screens
         document.querySelector('#winner-screen').classList.remove('visible');
+        document.querySelector('#gameOver').classList.remove('visible');
+        document.querySelector('#star1').classList.remove('invisible');
+        document.querySelector('#star2').classList.remove('invisible');
+        document.querySelector('#star3').classList.remove('invisible');
+        
     }
 
     initCards() {
@@ -92,6 +97,7 @@ class MemoryGame {
 
 
     checkForMatch() {
+        this.checkForLose();
         //if they match lock matched cards
         if (this.firstCard.dataset.country === this.secondCard.dataset.country) {
             this.firstCard.removeEventListener('click', this.flipCard);
@@ -109,6 +115,12 @@ class MemoryGame {
         }, 800)};
     }
 
+    // First card and second card variables should be reset after each turn.
+    endTurn() {
+        [this.flippedCard, this.lockBoard] = [false, false];
+        [this.firstCard, this.secondCard] = [null, null];
+    }
+
     // when all the flipped cards length equal to the array length, player win
     checkForWin() {
         if (document.querySelectorAll('.flip').length === this.countries.length) {
@@ -116,22 +128,32 @@ class MemoryGame {
         }
     }
 
-
-    //Show the time and score rating
+    // Show the time and score rating
     markWin() {
         this.timer.stop();
         document.querySelector('#winner-screen').classList.add('visible');
         document.querySelector('#yourTime').innerHTML = `Your time was ${this.timer}`;
-
     }
 
-    // First card and second card variables should be reset after each turn.
-    endTurn() {
-        [this.flippedCard, this.lockBoard] = [false, false];
-        [this.firstCard, this.secondCard] = [null, null];
+    // Excellent from 0 to 5 moves, Great from 6 to 15 moves, Good from 16 to 30 moves.
+    // After 31 moves, screen turns to Game over screen.
+    checkForLose() {
+        if(this.moves.count == 5) {
+            document.querySelector('#star1').classList.add('invisible');
+                    
+        } else if (this.moves.count == 15) {
+            document.querySelector('#star2').classList.add('invisible');
+        
+        } else if (this.moves.count == 30) {
+            document.querySelector('#star3').classList.add('invisible');
+            this.markLose();
+        }
     }
 
-    
+    markLose() {
+        this.timer.stop;
+        document.querySelector('#gameOver').classList.add('visible');
+    }
 };
 
 class Timer {
@@ -201,18 +223,6 @@ class Moves {
 
     increment() {
         this.element.innerHTML = `${++this.count} Moves`;  
-       
-        if(this.moves > 6) {
-            console.log(this.move)
-            document.querySelectorAll('.fa-star').classList.add('invisible');
-                
-        } else if (this.moves > 15) {
-            document.querySelectorAll('.fa-star').classList.add('invisible');
-
-        } else if (this.moves > 31) {
-            document.querySelector('#gameOver').classList.add('visible');
-        }
-        
     }
 
     reset() {
@@ -220,15 +230,7 @@ class Moves {
         this.element.innerHTML = `${this.count} Moves`;
     }
 }
-
-// ToDo: Add star rating
-// When the cards don't match, the player loose a star rating goes down.
-// Player has three stars and when all the stars are gone, it's game over
-// add game over screen popup
-// When player hits the refresh button, the star rating back to full
-// 
-
-
+ 
 
 
 // ToDo: wrap these global variables with anonymous function();
