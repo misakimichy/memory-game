@@ -46,7 +46,6 @@ class MemoryGame {
             setTimeout (() => this.initCountries(), 700);
         }
     }
-    
 
     initCountries() {
         // prepare 16 shuffled countries for the 16 cards
@@ -64,7 +63,6 @@ class MemoryGame {
             card.querySelector('.back-face').src = `img/${country}.jpg`;
         });
     }
-
 
     flipCard(card) {
         // lock board so when player double click the same card, it won't count as a second click
@@ -94,7 +92,6 @@ class MemoryGame {
             this.moves.increment();
         }
     } 
-
 
     checkForMatch() {
         this.checkForLose();
@@ -145,7 +142,7 @@ class MemoryGame {
     }
 
     // Excellent from 0 to 5 moves, Great from 6 to 15 moves, Good from 16 to 30 moves.
-    // After 31 moves, screen turns to Game over screen.
+    // After 31 moves, screen turns to game over screen.
     checkForLose() {
         if(this.moves.count == 5) {
             document.querySelector('#star1').classList.add('invisible');
@@ -241,22 +238,21 @@ class Moves {
 }
  
 
-
-// ToDo: wrap these global variables with anonymous function();
-let timer = new Timer(document.querySelector('.timer'));
-let moves = new Moves(document.querySelector('#turns'));
-let game = new MemoryGame(timer, moves);
-
-
-let cards = document.querySelectorAll('.card');
-cards.forEach(card => card.addEventListener('click', (e) => {
-    game.flipCard(e.currentTarget);
-}));
+(() => {
+    let timer = new Timer(document.querySelector('.timer'));
+    let moves = new Moves(document.querySelector('#turns'));
+    let game = new MemoryGame(timer, moves);
 
 
-document.querySelectorAll('.retry').forEach(element => element.addEventListener('click', () => {
-    game = new MemoryGame(timer, moves);
-}));
+    let cards = document.querySelectorAll('.card');
+    cards.forEach(card => card.addEventListener('click', (e) => {
+        game.flipCard(e.currentTarget);
+    }));
 
+
+    document.querySelectorAll('.retry').forEach(element => element.addEventListener('click', () => {
+        game = new MemoryGame(timer, moves);
+    }));
+})();
 
 
