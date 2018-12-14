@@ -8,7 +8,8 @@ class MemoryGame {
         this.firstCard = true;
         this.secondCard = true;
 
-        this.countries = ['australia','australia','egypt','egypt','france','france','india','india','italy','italy','japan','japan','london','london','usa','usa'];
+        this.countriesArr = ['australia','egypt','france', 'india', 'italy','japan','london','usa'];
+        this.countries = this.countriesArr.concat(this.countriesArr);
     
         this.reset();
     }
