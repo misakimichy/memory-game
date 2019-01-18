@@ -1,29 +1,20 @@
 # Memory Game - Udacity Front-End Nanodegree Program
 
-This memory game is for the second assignment.
+## Table of Contents
+- [Instructions](#instructions)
+- [Installation](#installation)
 
-## Content
-- index.html 
-  
-  contents of memory game
+##Instructions
 
-- css/app.css
-  
-  styling for memory game
-  Media query is from line 249.
-  
-- js/app.js
-  
-  three classes and one self executing closure/ no global scope.
+This is a project of Front-End Web Developer Nanodegree by Udacity.
+I made this memory game from scratch following Udacity's requirements [rubric](https://review.udacity.com/#!/rubrics/591/view).
 
-- img/
-  
-  images for memory game
-  
 
-### Rules of the game
-When the player click a card, the timer starts counting up.
-If you don't like the card, you can hit reset button next to the timer and cards are shuffled.
+![alt screenshot of this game](img/screenshot.png)
+
+- 4 x 4 cards are all shuffled
+- When you click a card, the timer start counting up.
+- You can reshuffle the cards to hit reset button next to the timer.
 
 #### Score rating
 within 5 moves: the score will be excellent.
@@ -34,4 +25,17 @@ within 30 moves, the score will be alright.
 
 after 30 moves, the game will be over.
 
-The player can try again to hit the try again button on the game over screen.
+
+##Installation
+1. Please use the following command to download this game:
+```
+git clone https://github.com/misakimichy/memory-game.git
+```
+2. Open `index.html` in your browser and you're ready to play.
+
+
+Or you can download zip file to your hard drive.
+1. Click the green button "Clone or download" above this page.
+2. Choose "Download ZIP".
+3. Open the folder "memory-game"
+4. Open `index.html` in your browser and you're ready to play.
