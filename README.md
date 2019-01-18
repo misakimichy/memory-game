@@ -1,10 +1,10 @@
-# Memory Game - Udacity Front-End Nanodegree Program
+# Memory Game
 
 ## Table of Contents
 - [Instructions](#instructions)
 - [Installation](#installation)
 
-##Instructions
+## Instructions
 
 This is a project of Front-End Web Developer Nanodegree by Udacity.
 I made this memory game from scratch following Udacity's requirements [rubric](https://review.udacity.com/#!/rubrics/591/view).
@@ -16,17 +16,8 @@ I made this memory game from scratch following Udacity's requirements [rubric](h
 - When you click a card, the timer start counting up.
 - You can reshuffle the cards to hit reset button next to the timer.
 
-#### Score rating
-within 5 moves: the score will be excellent.
 
-within 15 moves, the score will be great.
-
-within 30 moves, the score will be alright.
-
-after 30 moves, the game will be over.
-
-
-##Installation
+## Installation
 1. Please use the following command to download this game:
 ```
 git clone https://github.com/misakimichy/memory-game.git
