@@ -1,4 +1,4 @@
-@font-face {
+ @font-face {
     font-family: 'Chakra Petch';
     font-style: normal;
     font-weight: 400;
@@ -12,17 +12,14 @@
     box-sizing: border-box; 
   }
 
-
 body {
-    height: 100vh;
     font-family: 'Chakra Petch', 'Helvetica', 'Sans-serif';                   
     margin: 0;
     background-image: url(../img/background.jpg);
     background-color: rgba(255, 255, 255, 0.5);
     background-blend-mode: hard-light;
-    background-repeat: no-repeat;
+    background-repeat: repeat;
 }
-
 
 .container {
     display: flex;
@@ -30,7 +27,6 @@ body {
     align-items: center;
     flex-direction: column;
 }
-
 
 h1 {
     height: 60px;
@@ -95,13 +91,12 @@ h1 {
     float: left;
     text-align: center;
 }
-/* Style of main content */
 
+/* Style of main content */
 .cards {
-    margin: 0;
     padding: 1em;
     width: 900px;
-    height: 82vh;
+    height: 45vh;
     background-color: rgba(211, 211, 211, 0.5);
     border-radius: 4px;
     display: grid;
@@ -118,6 +113,7 @@ h1 {
     transform-style: preserve-3d;
     transition: transform 500ms ease-in-out;
 }
+
 .card img {
     width: 175px;   
     height: 140px;
@@ -151,7 +147,6 @@ h1 {
 }
 
 /* Game over and winning screen */
-
 .overlay-screen {
     position: fixed;
     right: 0;
@@ -164,7 +159,6 @@ h1 {
     justify-content: center;
     align-items: center;
     display: none;
-
 }
 
 .overlay-screen.visible {
@@ -177,6 +171,10 @@ h1 {
 
 .winning-message {
     font-size: 1.8em;
+}
+
+#starRating {
+    font-size: 2em;
 }
 
 .retry {
@@ -231,7 +229,6 @@ h1 {
         font-size: 2em;
     }
 }
-
 
 @keyframes overlay-grow {
     from  {
