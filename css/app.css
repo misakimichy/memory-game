@@ -175,6 +175,7 @@ h1 {
 
 #starRating {
     font-size: 2em;
+    list-style: none;
 }
 
 .retry {
