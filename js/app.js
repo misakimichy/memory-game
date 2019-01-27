@@ -133,7 +133,7 @@ class MemoryGame {
         const starContainer = document.querySelector('#starRating');
         const star ='<li><i class="fa fa-star" id="star1"></i></li>';
         
-        if (this.moves.count < 6) {
+        if (this.moves.count < 10) {
             document.querySelector('#yourScore').innerHTML = `Your score was excellent!!`;
             starContainer.innerHTML = star + star + star;
             
@@ -142,15 +142,15 @@ class MemoryGame {
             starContainer.innerHTML = star + star;
 
         } else if (this.moves.count < 30) {
-            document.querySelector('#yourScore').innerHTML = `Your score was alright.`;
+            document.querySelector('#yourScore').innerHTML = `Your score was good.`;
             starContainer.innerHTML = star;
         }
     }
 
-    // Excellent from 0 to 5 moves, Great from 6 to 15 moves, Good from 16 to 30 moves.
+    // Excellent from 0 to 10 moves, Great to 15 moves, Good to 30 moves.
     // After 31 moves, screen turns to game over screen.
     checkForLose() {
-        if(this.moves.count == 5) {
+        if(this.moves.count == 10) {
             document.querySelector('#star1').classList.add('invisible');
                     
         } else if (this.moves.count == 15) {
