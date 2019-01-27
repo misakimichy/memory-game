@@ -29,7 +29,6 @@ class MemoryGame {
         document.querySelector('#star1').classList.remove('invisible');
         document.querySelector('#star2').classList.remove('invisible');
         document.querySelector('#star3').classList.remove('invisible');
-        
     }
 
     initCards() {
@@ -131,14 +130,20 @@ class MemoryGame {
         this.timer.stop();
         document.querySelector('#winner-screen').classList.add('visible');
         document.querySelector('#yourTime').innerHTML = `Your time was ${this.timer}`;
+        const starContainer = document.querySelector('#starRating');
+        const star ='<li><i class="fa fa-star" id="star1"></i></li>';
+        
         if (this.moves.count < 6) {
             document.querySelector('#yourScore').innerHTML = `Your score was excellent!!`;
+            starContainer.innerHTML = star + star + star;
             
         } else if (this.moves.count < 15) {
             document.querySelector('#yourScore').innerHTML = `Your score was great!`;
+            starContainer.innerHTML = star + star;
 
         } else if (this.moves.count < 30) {
             document.querySelector('#yourScore').innerHTML = `Your score was alright.`;
+            starContainer.innerHTML = star;
         }
     }
 
